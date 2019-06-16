@@ -39,7 +39,7 @@ class WeChatPlugin extends AbstractPlugin
     {
         parent::__construct();
         if ($wechatConfig == null) {
-            $wechatConfig = new WechatConfig();
+            $wechatConfig = new WeChatConfig();
         }
         $this->wechatConfig = $wechatConfig;
     }
