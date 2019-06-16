@@ -105,7 +105,7 @@ class WeChatConfig extends BaseConfig
      * @param MiniProgramConfig $miniProgramConfig
      * @throws \ReflectionException
      */
-    public function setMiniProgramConfig(MiniProgramConfig $miniProgramConfig): void
+    public function setMiniProgramConfig(array $miniProgramConfig): void
     {
         if ($miniProgramConfig instanceof MiniProgramConfig) {
             $this->miniProgramConfig = $miniProgramConfig;
