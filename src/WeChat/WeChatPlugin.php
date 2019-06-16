@@ -11,13 +11,14 @@ namespace ESD\Plugins\WeChat;
 use ESD\Core\Context\Context;
 use ESD\Core\PlugIn\AbstractPlugin;
 use ESD\Core\PlugIn\PluginInterfaceManager;
+use ESD\Core\Plugins\Config\ConfigException;
 
 class WeChatPlugin extends AbstractPlugin
 {
     /**
      * @var WeChatConfig
      */
-    private $wechatConfig;
+    private $weChatConfig;
 
     /**
      * 获取插件名字
@@ -30,27 +31,19 @@ class WeChatPlugin extends AbstractPlugin
 
     /**
      * CachePlugin constructor.
-     * @param WechatConfig|null $securityConfig
-     * @throws \DI\DependencyException
-     * @throws \ReflectionException
-     * @throws \DI\NotFoundException
      */
-    public function __construct(?WechatConfig $wechatConfig = null)
+    public function __construct(?WeChatConfig $weChatConfig = null)
     {
         parent::__construct();
-        if ($wechatConfig == null) {
-            $wechatConfig = new WeChatConfig();
+        if ($weChatConfig == null) {
+            $weChatConfig = new WeChatConfig();
         }
-        $this->wechatConfig = $wechatConfig;
+        $this->weChatConfig = $weChatConfig;
     }
 
     /**
      * @param PluginInterfaceManager $pluginInterfaceManager
      * @return mixed|void
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
-     * @throws \ESD\Core\Exception
-     * @throws \ReflectionException
      */
     public function onAdded(PluginInterfaceManager $pluginInterfaceManager)
     {
@@ -60,27 +53,23 @@ class WeChatPlugin extends AbstractPlugin
     /**
      * @param Context $context
      * @return mixed|void
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
-     * @throws \ESD\Core\Plugins\Config\ConfigException
+     * @throws ConfigException
      */
     public function init(Context $context)
     {
         parent::init($context);
-        $this->wechatConfig->merge();
+        $this->weChatConfig->merge();
     }
 
     /**
      * 在服务启动前
      * @param Context $context
      * @return mixed
-     * @throws \DI\DependencyException
-     * @throws \DI\NotFoundException
-     * @throws \ESD\Core\Plugins\Config\ConfigException
+     * @throws ConfigException
      */
     public function beforeServerStart(Context $context)
     {
-        $this->wechatConfig->merge();
+        $this->weChatConfig->merge();
     }
 
     /**
