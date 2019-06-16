@@ -34,7 +34,7 @@ class OfficialAccount
         $this->onError = $onError;
     }
 
-    function __construct(OfficialAccountConfig $config = null)
+    function __construct(?OfficialAccountConfig $config = null)
     {
         if (is_null($config)) {
             $config = new OfficialAccountConfig;

@@ -50,7 +50,7 @@ class WeChatConfig extends BaseConfig
     /**
      * @return OfficialAccountConfig
      */
-    public function getOfficialAccountConfig(): OfficialAccountConfig
+    public function getOfficialAccountConfig()
     {
         return $this->officialAccountConfig;
     }
@@ -73,7 +73,7 @@ class WeChatConfig extends BaseConfig
     /**
      * @return OpenPlatformConfig
      */
-    public function getOpenPlatformConfig(): OpenPlatformConfig
+    public function getOpenPlatformConfig()
     {
         return $this->openPlatformConfig;
     }
@@ -96,7 +96,7 @@ class WeChatConfig extends BaseConfig
     /**
      * @return MiniProgramConfig
      */
-    public function getMiniProgramConfig(): MiniProgramConfig
+    public function getMiniProgramConfig()
     {
         return $this->miniProgramConfig;
     }

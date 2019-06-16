@@ -16,7 +16,7 @@ class OpenPlatform
 
     private $auth;
 
-    function __construct(OpenPlatformConfig $config = null)
+    function __construct(?OpenPlatformConfig $config = null)
     {
         if (is_null($config)) {
             $config = new OpenPlatformConfig;
