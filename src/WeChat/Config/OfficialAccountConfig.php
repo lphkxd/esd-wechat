@@ -10,7 +10,7 @@ namespace ESD\Plugins\WeChat\Config;
 
 use ESD\Core\Plugins\Config\BaseConfig;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
-use ESD\Plugins\WeChat\Utility\FileStorage;
+use ESD\Plugins\WeChat\Utility\CacheStorage;
 
 /**
  * 公众号配置文件
@@ -142,7 +142,7 @@ class OfficialAccountConfig extends BaseConfig
     public function getStorage(): StorageInterface
     {
         if (!isset($this->storage)) {
-            $this->storage = new FileStorage($this->getAppId());
+            $this->storage = new CacheStorage($this->getAppId());
         }
         return $this->storage;
     }

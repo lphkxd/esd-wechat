@@ -11,7 +11,7 @@ namespace ESD\Plugins\WeChat\Utility;
 use ESD\Plugins\Redis\GetRedis;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
 
-class FileStorage implements StorageInterface
+class CacheStorage implements StorageInterface
 {
     use GetRedis;
     private $key;
