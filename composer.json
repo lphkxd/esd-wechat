@@ -3,7 +3,6 @@
     "esd/esd-core": "~0.1",
     "ext-json": "*",
     "esd/cache-plugin": "~0.1",
-    "esd/easyroute-plugin": "~0.1",
     "esd/saber-plugin": "~0.1",
     "esd/redis-plugin": "~0.1"
   },

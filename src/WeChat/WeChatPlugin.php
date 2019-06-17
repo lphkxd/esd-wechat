@@ -51,17 +51,6 @@ class WeChatPlugin extends AbstractPlugin
     }
 
     /**
-     * @param Context $context
-     * @return mixed|void
-     * @throws ConfigException
-     */
-    public function init(Context $context)
-    {
-        parent::init($context);
-        $this->weChatConfig->merge();
-    }
-
-    /**
      * 在服务启动前
      * @param Context $context
      * @return mixed

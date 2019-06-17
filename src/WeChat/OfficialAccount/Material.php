@@ -9,8 +9,7 @@
 namespace ESD\Plugins\WeChat\OfficialAccount;
 
 
-use EasySwoole\HttpClient\Exception\InvalidUrl;
-use EasySwoole\Utility\Mime\MimeDetectorException;
+use ESD\Plugins\WeChat\Exception\InvalidUrl;
 use ESD\Plugins\WeChat\Bean\OfficialAccount\MediaArticle;
 use ESD\Plugins\WeChat\Bean\OfficialAccount\MediaRequest;
 use ESD\Plugins\WeChat\Bean\OfficialAccount\MediaResponse;

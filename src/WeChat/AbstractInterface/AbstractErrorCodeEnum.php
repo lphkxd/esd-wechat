@@ -9,7 +9,8 @@
 namespace ESD\Plugins\WeChat\AbstractInterface;
 
 
-use EasySwoole\Spl\SplEnum;
+
+use ESD\Plugins\WeChat\Utility\SplEnum;
 
 class AbstractErrorCodeEnum extends SplEnum
 {

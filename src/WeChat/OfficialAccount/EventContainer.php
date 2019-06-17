@@ -8,11 +8,10 @@
 
 namespace ESD\Plugins\WeChat\OfficialAccount;
 
-
-use EasySwoole\Component\Event;
 use ESD\Plugins\WeChat\Bean\OfficialAccount\RequestConst;
+use Go\Core\Container;
 
-class EventContainer extends Event
+class EventContainer extends Container
 {
     function onSubscribe(callable $call):EventContainer
     {

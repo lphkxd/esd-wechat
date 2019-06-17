@@ -9,8 +9,6 @@
 namespace ESD\Plugins\WeChat\Bean\OfficialAccount;
 
 use ESD\Core\Server\Beans\Response;
-use EasySwoole\Utility\Mime\MimeDetectorException;
-use EasySwoole\Utility\MimeType;
 use InvalidArgumentException;
 use Swoole\Coroutine;
 
@@ -74,7 +72,6 @@ class MediaResponse
         }
 
         $contents = $this->httpResponse()->getBody();
-
         if (empty($filename)) {
             if (preg_match('/filename="(?<filename>.*?)"/', $this->httpResponse()->getHeaders()['content-disposition'], $match)) {
                 $filename = $match['filename'];

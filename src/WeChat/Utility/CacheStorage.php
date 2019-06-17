@@ -23,13 +23,10 @@ class CacheStorage implements StorageInterface
 
     public function get($key)
     {
-        p($this->key . $key);
-
         $data = $this->redis()->get($this->key . $key);
         $json = json_decode($data, true);
         return $json;
     }
-
     /**
      * @param $key
      * @param $value

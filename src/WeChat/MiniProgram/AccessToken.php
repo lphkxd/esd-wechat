@@ -8,7 +8,7 @@
 
 namespace ESD\Plugins\WeChat\MiniProgram;
 
-use EasySwoole\HttpClient\Exception\InvalidUrl;
+use ESD\Plugins\WeChat\Exception\InvalidUrl;
 use ESD\Plugins\WeChat\Exception\RequestError;
 use ESD\Plugins\WeChat\Utility\HttpClient;
 use ESD\Plugins\WeChat\Exception\MiniProgramError;

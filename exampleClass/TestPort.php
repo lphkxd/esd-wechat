@@ -12,7 +12,6 @@ use ESD\Core\Server\Beans\Request;
 use ESD\Core\Server\Beans\Response;
 use ESD\Core\Server\Beans\WebSocketFrame;
 use ESD\Core\Server\Port\ServerPort;
-use ESD\Plugins\WeChat\Bean\OfficialAccount\JsAuthRequest;
 use ESD\Plugins\WeChat\Exception\OfficialAccountError;
 use ESD\Plugins\WeChat\Exception\RequestError;
 use ESD\Plugins\WeChat\GetWeChat;
@@ -22,7 +21,6 @@ class TestPort extends ServerPort
 
 
     use GetWeChat;
-
 
 
     public function onTcpConnect(int $fd, int $reactorId)
@@ -52,24 +50,14 @@ class TestPort extends ServerPort
 
     public function onHttpRequest(Request $request, Response $response)
     {
-
-
-        $param = new JsAuthRequest;
-        $param->setRedirectUri('http://www.baidu.com');
-        $param->setType(JsAuthRequest::TYPE_USER_INFO);
-        $pay = $this->getOfficialAccount()->user()->list();
-
         try {
-            $pay = $this->getOfficialAccount()->user()->list();
-
-        } catch (RequestError $requestError){
-
-        } catch (OfficialAccountError $error){
-
+            $OfficialAccount = $this->getOfficialAccount()->user()->list();
+            print_r($OfficialAccount);
+        } catch (RequestError $requestError) {
+            print_r($requestError->getMessage());
+        } catch (OfficialAccountError $error) {
+            print_r($error->getMessage());
         }
-
-
-        p($pay);
 
 
     }
