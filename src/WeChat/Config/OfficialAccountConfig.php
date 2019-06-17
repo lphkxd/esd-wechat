@@ -10,7 +10,7 @@ namespace ESD\Plugins\WeChat\Config;
 
 use ESD\Core\Plugins\Config\BaseConfig;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
-use ESD\Plugins\WeChat\Utility\CacheStorage;
+use ESD\Plugins\WeChat\CacheStorage\RedisCacheStorage;
 
 /**
  * 公众号配置文件
@@ -24,8 +24,7 @@ class OfficialAccountConfig extends BaseConfig
     protected $appId;
     protected $appSecret;
     protected $encrypt = false;
-    protected $storage;
-    protected $tempDir;
+    private $storage;
 
 
     const key = "wechat.official_account_config";
@@ -142,7 +141,7 @@ class OfficialAccountConfig extends BaseConfig
     public function getStorage(): StorageInterface
     {
         if (!isset($this->storage)) {
-            $this->storage = new CacheStorage($this->getAppId());
+            $this->storage = new RedisCacheStorage($this->getAppId());
         }
         return $this->storage;
     }
@@ -158,26 +157,4 @@ class OfficialAccountConfig extends BaseConfig
         return $this;
     }
 
-    /**
-     * 获取临时目录
-     * @return mixed
-     */
-    public function getTempDir()
-    {
-        if (empty($this->tempDir)) {
-            $this->tempDir = sys_get_temp_dir();
-        }
-        return $this->tempDir;
-    }
-
-    /**
-     * 设置临时目录
-     * @param $tempDir
-     * @return OfficialAccountConfig
-     */
-    public function setTempDir($tempDir): OfficialAccountConfig
-    {
-        $this->tempDir = $tempDir;
-        return $this;
-    }
 }

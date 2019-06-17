@@ -10,7 +10,7 @@ namespace ESD\Plugins\WeChat\Config;
 
 use ESD\Core\Plugins\Config\BaseConfig;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
-use ESD\Plugins\WeChat\Utility\CacheStorage;
+use ESD\Plugins\WeChat\CacheStorage\RedisCacheStorage;
 
 /**
  * 小程序配置文件
@@ -21,18 +21,14 @@ class MiniProgramConfig extends BaseConfig
 {
     protected $appId;
     protected $appSecret;
-    protected $storage;
-    protected $tempDir;
-
+    private $storage;
 
     const key = "wechat.mini_program_config";
-
 
     public function __construct()
     {
         parent::__construct(self::key);
     }
-
 
     /**
      * 初始化小程序配置
@@ -94,7 +90,7 @@ class MiniProgramConfig extends BaseConfig
     public function getStorage(): StorageInterface
     {
         if (!isset($this->storage)) {
-            $this->storage = new CacheStorage($this->getAppId());
+            $this->storage = new RedisCacheStorage($this->getAppId());
         }
         return $this->storage;
     }
@@ -108,27 +104,6 @@ class MiniProgramConfig extends BaseConfig
     {
         $this->storage = $storage;
         return $this;
-    }
-
-    /**
-     * 获取临时目录
-     * @return mixed
-     */
-    public function getTempDir()
-    {
-        if (empty($this->tempDir)) {
-            $this->tempDir = sys_get_temp_dir();
-        }
-        return $this->tempDir;
-    }
-
-    /**
-     * 设置临时目录
-     * @param mixed $tempDir
-     */
-    public function setTempDir($tempDir): void
-    {
-        $this->tempDir = $tempDir;
     }
 
 }

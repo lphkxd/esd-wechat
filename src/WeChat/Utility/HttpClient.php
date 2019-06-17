@@ -40,7 +40,7 @@ class HttpClient
      */
     static function get(string $url)
     {
-        return self::client($url)->get($url);
+        return self::client()->get($url);
     }
 
     /**
@@ -64,7 +64,7 @@ class HttpClient
      */
     static function post(string $url, $data = null, int $timeout = null)
     {
-        $client = self::client($url);
+        $client = self::client();
         // 定义了独立的超时则使用独立设置
         if (!is_null($timeout) && $timeout > self::$TIMEOUT) {
             $client->setOptions(['timeout' => $timeout]);
@@ -94,13 +94,13 @@ class HttpClient
      */
     static function postJson(string $url, $data)
     {
-        $client = self::client($url);
+        $client = self::client();
         // 传入的数据需要提前编码为Json
         if (is_array($data)) {
             $data = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         }
         $client->setOptions(['content_type' => ContentType::JSON]);
-        return $client->post($data, $data);
+        return $client->post($url, $data);
     }
 
     /**

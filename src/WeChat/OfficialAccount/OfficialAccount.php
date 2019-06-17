@@ -164,7 +164,7 @@ class OfficialAccount
      * @param NetCheckRequest $request
      * @return array
      * @throws OfficialAccountError
-     * @throws \ ESD\Plugins\WeChat\Exception\RequestError
+     * @throws RequestError
      */
     function netCheck(NetCheckRequest $request):array
     {

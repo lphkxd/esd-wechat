@@ -12,7 +12,7 @@ EasySwoole Distributed WeChat Plugin 是一个基于 Swoole 4.x 全协程支持�
 
 ## 获取实例
 
-在开始操作之前需要获取一个实例，后续操作均使用该实例进行操作
+添加 WeChatPlugin 插件
 
 ```php
  app/Application 的 main 中添加插件
@@ -25,7 +25,25 @@ EasySwoole Distributed WeChat Plugin 是一个基于 Swoole 4.x 全协程支持�
   }
 ```
 
- 程序中使用以下方式获取实例
+
+
+ 在开始操作之前需要获取一个实例，程序中使用以下方式获取实例
+```yaml
+wechat:
+  official_account_config:  #公众号配置
+    app_id: 111111111
+    app_secret: 22222222222222222222
+    ....
+  mini_program_config:  #小程序配置
+    app_id: 111111111
+    app_secret: 22222222222222222222
+  open_platform_config: #开放平台配置
+    app_id: 111111111
+    app_secret: 22222222222222222222
+```
+
+
+ 在开始操作之前需要获取一个实例，程序中使用以下方式获取实例
 ```php
  use GetWeChat;
  //获取公众号实例

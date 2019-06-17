@@ -6,12 +6,12 @@
  * Time: 9:44 PM
  */
 
-namespace ESD\Plugins\WeChat\Utility;
+namespace ESD\Plugins\WeChat\CacheStorage;
 
 use ESD\Plugins\Redis\GetRedis;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
 
-class CacheStorage implements StorageInterface
+class RedisCacheStorage implements StorageInterface
 {
     use GetRedis;
     private $key;

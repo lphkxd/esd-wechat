@@ -10,9 +10,10 @@ namespace ESD\Plugins\WeChat\Config;
 
 use ESD\Core\Plugins\Config\BaseConfig;
 use ESD\Plugins\WeChat\AbstractInterface\StorageInterface;
-use ESD\Plugins\WeChat\Utility\CacheStorage;
+use ESD\Plugins\WeChat\CacheStorage\RedisCacheStorage;
 
 /**
+ * TODO:未完善
  * 开放平台配置
  * Class OpenPlatformConfig
  * @package ESD\Plugins\WeChat\OpenPlatform
@@ -21,8 +22,8 @@ class OpenPlatformConfig extends BaseConfig
 {
     protected $appId;
     protected $appSecret;
-    protected $storage;
-    protected $tempDir;
+    private $storage;
+
     const key = "wechat.open_platform_config";
 
     public function __construct()
@@ -77,42 +78,23 @@ class OpenPlatformConfig extends BaseConfig
     public function getStorage(): StorageInterface
     {
         if (!isset($this->storage)) {
-            $this->storage = new CacheStorage( $this->getAppId());
+            $this->storage = new RedisCacheStorage($this->getAppId());
         }
         return $this->storage;
     }
-
     /**
      * 设置储存器
      * @param mixed $storage
      * @return OpenPlatformConfig
      */
-    public function setStorage($storage): OpenPlatformConfig
+    public function setStorage($storage)
     {
-        $this->storage = $storage;
-        return $this;
+        // TODO:
+//        if (class_exists($storage)) {
+//            $this->storage == new $storage($this->getAppId());
+//        } else {
+//            $this->storage = new RedisCacheStorage($this->getAppId());
+//        }
     }
 
-    /**
-     * 获取临时目录
-     * @return mixed
-     */
-    public function getTempDir()
-    {
-        if (empty($this->tempDir)) {
-            $this->tempDir = sys_get_temp_dir();
-        }
-        return $this->tempDir;
-    }
-
-    /**
-     * 设置临时目录
-     * @param mixed $tempDir
-     * @return OpenPlatformConfig
-     */
-    public function setTempDir($tempDir): OpenPlatformConfig
-    {
-        $this->tempDir = $tempDir;
-        return $this;
-    }
 }
